@@ -19,7 +19,7 @@ def inflate_compression(input_file, output_dir):
 
     compress_ratio = (float(len(data)) - float(len(compressed))) / float(len(data))
 
-    print('Compressed: %d%%' % (100.0 * compress_ratio))
+    #print('Compressed: %d%%' % (100.0 * compress_ratio))
     
     output_name = input_file.split("\\")[-1].split(".")[0]+".gz"
 

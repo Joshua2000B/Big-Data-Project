@@ -1,10 +1,13 @@
-from PIL import Image
-import os
+
 
 def copy_compression(input_file, output_dir):
-    img = Image.open(input_file)
-    img.save(os.path.join(output_dir, os.path.split(input_file)[1]))
+    file = open(input_file,'rb')
+    data = file.read()
+    file.close()
 
-def copy_decompression(input_file, output_dir):
-    img = Image.open(input_file)
-    img.save(os.path.join(output_dir, os.path.split(input_file)[1]))
+    output_file = "copy_"+input_file.split("\\")[-1]
+    file = open(output_dir+output_file,'wb')
+    file.write(data)
+    file.close()
+
+
