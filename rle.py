@@ -173,16 +173,25 @@ class RLEBitmap:
         for v in pixels:
             stream.write('%i: %i\n' % (v))
         stream.write('\n')
-        
-    
-file = input("Enter a image location: ")
 
-rle = RLEBitmap()
-rle.open_png(file)
-fs = open(file.split('.')[0] + ".rle", 'w')
-rle.write_rle_tostream(fs)
-fs.close()
-rle.write_memory_tofile("compressed_"+file)
+
+def rle_compression(input_file,output_dir):
+    rle = RLEBitmap()
+    rle.open_png(input_file)
+    fs = open(input_file.split('.')[0]+".rle",'w')
+    rle.write_rle_tostream(fs)
+    fs.close()
+    rle.write_memory_tofile(output_dir+"rle_"+input_file.split('\\')[-1].split('.')[0]+".png")
+        
+if(__name__ == "__main__"):   
+    file = input("Enter a image location: ")
+
+    rle = RLEBitmap()
+    rle.open_png(file)
+    fs = open(file.split('.')[0] + ".rle", 'w')
+    rle.write_rle_tostream(fs)
+    fs.close()
+    rle.write_memory_tofile("compressed_"+file)
 
 #some tests
 #open up a PNG and write it to a RLE document

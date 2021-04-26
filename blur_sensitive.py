@@ -25,4 +25,4 @@ def blur_compression(input_file, output_dir, segmentSize=16, threashold=16):
             #If the variation of the segment is threashold less than the image adverage, assign it a solid color
             if(blurMap[h*segmentSize:hMax, w*segmentSize:wMax].var() - vari < threashold):
                 img[h*segmentSize:hMax, w*segmentSize:wMax] = np.average(np.average(img[h*segmentSize:hMax, w*segmentSize:wMax], axis=0), axis=0)
-    cv2.imwrite(os.path.join(output_dir, os.path.split(input_file)[1]), img)
+    cv2.imwrite(os.path.join(output_dir, "blur_"+os.path.split(input_file)[1]), img)

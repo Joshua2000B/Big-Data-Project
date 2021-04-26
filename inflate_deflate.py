@@ -49,7 +49,7 @@ def inflate_decompression(input_file, output_dir):
     compressed = open(input_file,'rb').read()
     data = zlib.decompress(compressed)
     
-    output_name = input_file.split("\\")[-1].split(".")[0]+".bmp"
+    output_name = "inflated_"+(input_file.split("/")[-1]).split(".")[0]+".bmp"
 
     file = open(output_dir+output_name,'wb')
     file.write(data)
